@@ -1,7 +1,7 @@
 {
   "name": "nodejs-wechatpay",
-  "version": "1.1.0",
-  "description": "nodejs wechatpay apiv2 ",
+  "version": "1.2.0",
+  "description": "微信支付 服务商版本，普通商户版本 nodejs  接口实现 wechatpay apiv2 ",
   "main": "index.js",
   "directories": {
     "example": "examples",
@@ -15,9 +15,16 @@
     "url": "git+https://github.com/DplusTech/nodejs-wechatpay-v2.git"
   },
   "keywords": [
-    "wechat",
-    "pay",
-    "nodejs"
+    "wechatpay",
+    "nodejs",
+    "微信支付",
+    "微信支付服务商",
+    "微信发红包",
+    "微信提现",
+    "扫码支付",
+    "dplus.tech",
+    "迪迦科技"
+    
   ],
   "author": "bower.liu@gmail.com",
   "license": "ISC",
