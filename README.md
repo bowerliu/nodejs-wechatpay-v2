@@ -1,21 +1,22 @@
-
-#nodejs-wechatpay-v2 是什么?
+# nodejs-wechatpay-v2 是什么?
 
 一个实现了微信支付apiv2的nodejs库，包括微信支付服务商体系，2015年由作者开发并实际使用至今，一直稳定运行，封装简单，实用主义，适合新手。
-#nodejs-wechatpay-v2 有什么主要功能？
+
+# nodejs-wechatpay-v2 有什么主要功能？
 
 * 微信支付服务商接口实现
 * 微信支付普通商户接口实现
 
 
-#如何使用
-##安装引用
+# 如何使用
+## 安装引用
+
 可以直接下载源码后直接引用也可以npm安装
 
 执行命令：`npm install nodejs-wechatpay`
 
-##创建实例 
-###实例化服务商
+## 创建实例 
+### 实例化服务商
 ```javascript
 const { WechatPayPartner } = require('nodejs-wechatpay')//服务商
 const wxpayPartner = new WechatPayPartner( {
@@ -32,7 +33,7 @@ const wxpayPartner = new WechatPayPartner( {
 });
 
 ```
-###实例化普通商户
+### 实例化普通商户
 ```javascript
 const { WechatPay } = require('nodejs-wechatpay')//服务商
 const wxpay = new WechatPay( {
@@ -46,7 +47,7 @@ const wxpay = new WechatPay( {
 });
 
 ```
-###统一下单接口
+### 统一下单接口
 ```javascript
 wxpayPartner.unifiedorder({ //统一下单
     money:100,//支付金额 单位:元
@@ -61,8 +62,10 @@ wxpayPartner.unifiedorder({ //统一下单
 })
 ```
 *所以接口形式都一样，接口参数加上 success fall complete 三个回调函数 自行调节
- ###例子：统一下单
+
+### 例子：统一下单
  *wxpayPartner.pay 为 wxpayPartner.unifiedorder 别名
+
 ```javascript
 // 
 wxpayPartner.pay({ //适用于公众号 小程序支付
@@ -96,7 +99,7 @@ wxpayPartner.pay({ //适用于公众号 小程序支付
 })
 ```
 
-###例子：二维码支付
+### 例子：二维码支付
  *payNative 是 unifiedorder({trade_type:"NATIVE"}) 简写
 ```javascript
 // wxpayPartner.payNative({ // payNative 是 unifiedorder({trade_type:"NATIVE"}) 简写
