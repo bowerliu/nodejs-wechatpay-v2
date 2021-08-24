@@ -35,8 +35,8 @@ const wxpayPartner = new WechatPayPartner( {
 ```
 ### 实例化普通商户
 ```javascript
-const { WechatPay } = require('nodejs-wechatpay')//服务商
-const wxpay = new WechatPay( {
+const { WechatPay } = require('nodejs-wechatpay')
+const wxpay = new WechatPay( { // 普通商户
 	appid:'', //商户对应的appid 必填
 	mch_id:'',//商户号 必填
 	key:'',//商户号对应的key 必填
@@ -64,7 +64,7 @@ wxpayPartner.unifiedorder({ //统一下单
 *所以接口形式都一样，接口参数加上 success fall complete 三个回调函数 自行调节
 
 ### 例子：统一下单
- *wxpayPartner.pay 为 wxpayPartner.unifiedorder 别名
+ * wxpayPartner.pay 为 wxpayPartner.unifiedorder 别名
 
 ```javascript
 // 
@@ -100,7 +100,7 @@ wxpayPartner.pay({ //适用于公众号 小程序支付
 ```
 
 ### 例子：二维码支付
- *payNative 是 unifiedorder({trade_type:"NATIVE"}) 简写
+ * payNative 是 unifiedorder({trade_type:"NATIVE"}) 简写
 ```javascript
 // wxpayPartner.payNative({ // payNative 是 unifiedorder({trade_type:"NATIVE"}) 简写
 	body:'买一个',
