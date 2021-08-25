@@ -54,4 +54,26 @@ wxpayPartner.pay({ //适用于公众号 小程序支付
             }
           }
     }
-	})
+})
+//二维码支付
+wxpayPartner.payNative({ // payNative 是 unifiedorder({trade_type:"NATIVE"}) 简写
+	body:'买一个',
+	money: 10,
+	openid:'ortoKwa920J3j0rQo0z_aqJOd_F4',
+    success:function(r){
+        //JSAPI返回值示例
+        r == {
+            return_code: 'SUCCESS',
+            return_msg: 'OK',
+            result_code: 'SUCCESS',
+            mch_id: 'xxxxx',
+            appid: 'xxxxxxxxxxx',
+            sub_mch_id: 'xxxxxxx',
+            nonce_str: 'ecezq8fFRjAx1YuM',
+            sign: 'A50E77ECD9D8C413FC4CBFE6332ABBDE',
+            prepay_id: 'wx24155740491366bcc45e81063590060000',
+            trade_type: 'NATIVE',
+            code_url: 'weixin://wxpay/bizpayurl?pr=eE2yFA7zz' //此为二维码url
+          }
+    }
+})

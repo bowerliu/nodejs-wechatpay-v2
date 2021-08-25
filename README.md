@@ -47,7 +47,14 @@ const wxpay = new WechatPay( { // 普通商户
 });
 
 ```
-### 统一下单接口
+### 接口约定
+1：方法名为微信支付api url最后单词 全部小写
+如发红包接口url `https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack`
+则 发红包调用方法 wxpayPartner.sendredpack()
+2： 所以方法都有 success(成功回调) fall(失败回调) complete(完成回调) 
+三个回调函数 自行调节
+
+### 统一下单接口 unifiedorder
 ```javascript
 wxpayPartner.unifiedorder({ //统一下单
     money:100,//支付金额 单位:元
@@ -64,7 +71,7 @@ wxpayPartner.unifiedorder({ //统一下单
 *所以接口形式都一样，接口参数加上 success fall complete 三个回调函数 自行调节
 
 ### 例子：统一下单
- * wxpayPartner.pay 为 wxpayPartner.unifiedorder 别名
+   wxpayPartner.pay 为 wxpayPartner.unifiedorder 别名
 
 ```javascript
 // 
@@ -98,11 +105,13 @@ wxpayPartner.pay({ //适用于公众号 小程序支付
 })
 })
 ```
+**   jsapi_sign //此字段只有在success函数中会有 是对预支付prepay_id 进行paysign签名后的结果 可以直接在公众号小程序中使用
+
 
 ### 例子：二维码支付
  * payNative 是 unifiedorder({trade_type:"NATIVE"}) 简写
 ```javascript
-// wxpayPartner.payNative({ // payNative 是 unifiedorder({trade_type:"NATIVE"}) 简写
+ wxpayPartner.payNative({ // payNative 是 unifiedorder({trade_type:"NATIVE"}) 简写
 	body:'买一个',
 	money: 10,
 	openid:'ortoKwa920J3j0rQo0z_aqJOd_F4',
@@ -124,3 +133,44 @@ wxpayPartner.pay({ //适用于公众号 小程序支付
     }
 })
 ``` 
+
+### micropay 付款码支付接口
+注意 需要专门此开通权限 
+```javascript
+ wxpayPartner.micropay({  
+	money: 10,//金额 元  必传
+    auth_code:auth_code,//付款码扫描结果 必传！！！
+    body:'买一个',
+    out_trade_no:out_trade_no,//可不传
+    success:function(r){
+    }
+}
+``` 
+
+### sendredpack 发普通红包接口
+注意 需要专门此开通权限  红包金额有一定限制
+```javascript
+ wxpayPartner.sendredpack({  
+	money: 10,//金额 元  必传,
+    total_num:total_num//红包发放总人数
+    openid:"openid",// 必传！！！
+    send_name:'商户名称',
+    wishing:'红包祝福语',
+    act_name:'活动名称',
+    remark:'备注信息',
+    out_trade_no:out_trade_no,//可不传
+    success:function(r){
+    }
+}
+``` 
+
+### orderquery 查询订单
+### closeorder 完结订单
+### downloadBill 下载交易账单
+### profitsharingaddreceiver  添加分账接收方
+### profitsharingremovereceiver 删除分账接收方
+### profitsharingfinish 完结分账
+### profitsharing 请求单次分账
+### refund 退款
+### transfers 企业付款
+### downloadfundflow 下载资金账单
