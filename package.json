@@ -1,6 +1,6 @@
 {
   "name": "nodejs-wechatpay",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "微信支付 服务商版本，普通商户版本 nodejs  接口实现 wechatpay apiv2 ",
   "main": "index.js",
   "directories": {
@@ -16,6 +16,7 @@
   },
   "keywords": [
     "wechatpay",
+    "wxpay",
     "nodejs",
     "微信支付",
     "微信支付服务商",

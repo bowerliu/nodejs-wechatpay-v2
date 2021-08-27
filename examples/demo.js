@@ -77,3 +77,30 @@ wxpayPartner.payNative({ // payNative 是 unifiedorder({trade_type:"NATIVE"}) �
           }
     }
 })
+
+/// micropay 付款码支付接口
+//注意 需要专门此开通权限 
+
+ wxpayPartner.micropay({  
+	money: 10,//金额 元  必传
+    auth_code:auth_code,//付款码扫描结果 必传！！！
+    body:'买一个',
+    out_trade_no:out_trade_no,//可不传
+    success:function(r){
+    }
+}
+/
+
+//sendredpack 发普通红包接口
+wxpayPartner.sendredpack({  
+	money: 10,//金额 元  必传,
+    total_num:total_num,//红包发放总人数
+    openid:"openid",// 必传！！！
+    send_name:'商户名称',
+    wishing:'红包祝福语',
+    act_name:'活动名称',
+    remark:'备注信息',
+    out_trade_no:out_trade_no,//可不传
+    success:function(r){
+    }
+}
