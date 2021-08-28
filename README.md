@@ -29,7 +29,7 @@ const wxpayPartner = new WechatPayPartner( {
 	notify_url:"",//支付回调地址 须公网可访问 
     ip:'',//发起请求的ip 
     cert:'',//  apiclient_cert.p12 文件路径; 必填
-    profit_sharing:'N',// 是否分账 可以不传 默认不分账 (只有服务商才可以分账),
+    profit_sharing:'N',// 是否分账 可以不传 默认不分账  ,
     debug:false // 默认false 开启会打印发送信息到console
 });
 
@@ -44,6 +44,7 @@ const wxpay = new WechatPay( { // 普通商户
 	notify_url:"",//支付回调地址 须公网可访问 
     ip:'',//发起请求的ip 
     cert:'',//  apiclient_cert.p12 文件路径; 必填
+    profit_sharing:'N',// 是否分账 可以不传 默认不分账  ,
     debug:false // 默认false 开启会打印发送信息到console
 });
 
@@ -52,6 +53,7 @@ const wxpay = new WechatPay( { // 普通商户
 1：方法名为微信支付api url最后单词 全部小写
 如发红包接口url `https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack`
 则 发红包调用方法 wxpayPartner.sendredpack()
+
 2： 所以方法都有 success(成功回调) fall(失败回调) complete(完成回调) 
 三个回调函数 自行调节
 
@@ -165,13 +167,31 @@ wxpayPartner.pay({ //适用于公众号 小程序支付
 }
 ``` 
 
+## 订单相关
 ### orderquery 查询订单
 ### closeorder 完结订单
+### refund 退款
+
+## 下载相关
 ### downloadBill 下载交易账单
+### downloadfundflow 下载资金账单
+
+## 付款相关 只有普通商户才有此类接口
+### transfers 企业付款 付款到微信零钱
+### pay_bank 付款得到银行卡
+
+## 红包相关
+### sendredpack 发放裂变红包
+### sendgroupredpack 发放裂变红包
+### gethbinfo 查询红包记录
+
+## 分账相关
 ### profitsharingaddreceiver  添加分账接收方
 ### profitsharingremovereceiver 删除分账接收方
 ### profitsharingfinish 完结分账
 ### profitsharing 请求单次分账
-### refund 退款
-### transfers 企业付款
-### downloadfundflow 下载资金账单
+### multiprofitsharing 请求多次分账
+### profitsharingquery 查询分账结果
+### profitsharingorderamountquery 查询订单待分账金额
+### profitsharingreturn 分账回退
+### profitsharingreturnquery 分账回退结果查询
